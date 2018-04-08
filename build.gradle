@@ -1,14 +1,38 @@
-// tested with gradle 3.5.1
+// Note: please use gradle 4.3+
+
 plugins {
-    id 'java'
-    id 'org.springframework.boot' version '1.5.6.RELEASE'
+    id 'org.springframework.boot' version '1.5.10.RELEASE' // add some improvements when using spring boot, like "fat-jar" creation
+    id 'groovy' // groovy allows usage of java + groovy
 }
 
 repositories {
     jcenter()
 }
 
+jar {
+    // name of generated jar
+    baseName = 'parser'
+}
+
 dependencies {
-    // allows usage of annotations like @RestController and much more!
-    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // handle command line parameters
+    compile 'commons-cli:commons-cli:1.4'
+
+    // external DB usage: driver to connect to MySQL
+    compile 'mysql:mysql-connector-java'
+
+    // embedded DB usage: allow auto-creation of a embedded MariaDB instance (https://github.com/vorburger/MariaDB4j)
+    compile 'ch.vorburger.mariaDB4j:mariaDB4j:2.2.3'
+
+    // SpringBoot
+    compile 'org.springframework.boot:spring-boot-starter'
+    compile 'org.springframework:spring-jdbc'
+    compile 'com.h2database:h2' // necessary to have JdbcTemplate
+
+    // Spock (jUnit less verbose), for unit tests
+    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+
+    // Groovy: we need to explicit declare this dependency because of the org.springframework.boot plugin
+    testCompile 'org.codehaus.groovy:groovy-all:2.4.12'
 }
