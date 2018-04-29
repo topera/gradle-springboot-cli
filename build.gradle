@@ -3,6 +3,7 @@
 plugins {
     id 'org.springframework.boot' version '1.5.10.RELEASE' // add some improvements when using spring boot, like "fat-jar" creation
     id 'groovy' // groovy allows usage of java + groovy
+    id 'idea'
 }
 
 repositories {
