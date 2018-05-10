@@ -28,5 +28,4 @@ Tech Stack
 * Linux Mate
 * MySQL 5.7.2
 
-To take a look in other tutorials, please see https://github.com/topera/hello-world-index
-
+To take a look in other projects, please see https://github.com/topera/index
